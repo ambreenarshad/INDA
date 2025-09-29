@@ -1,0 +1,72 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [Create links in GNS3 project based on JSON file] *************************
+
+TASK [Get all projects from GNS3] **********************************************
+ok: [localhost]
+
+TASK [Set project ID based on project name] ************************************
+ok: [localhost]
+
+TASK [Check if the project is opened] ******************************************
+ok: [localhost]
+
+TASK [Open the project if it is not already opened] ****************************
+skipping: [localhost]
+
+TASK [Retrieve device node IDs from the GNS3 project] **************************
+ok: [localhost]
+
+TASK [Create link from S5224F-ONFrontView33 to N3248TE-ONFrontView77] **********
+ok: [localhost]
+
+TASK [Create link from S5224F-ONFrontView33 to S5212F-ONFrontView(ACPower)66] ***
+ok: [localhost]
+
+TASK [Create link from S5224F-ONFrontView33 to S5224F-ONFrontView69] ***********
+ok: [localhost]
+
+TASK [Create link from S5224F-ONFrontView33 to S5232F-ONFrontView59] ***********
+ok: [localhost]
+
+TASK [Create link from S4128F-ONFrontView47 to N3248TE-ONFrontView77] **********
+ok: [localhost]
+
+TASK [Create link from S4128F-ONFrontView47 to S5212F-ONFrontView(ACPower)66] ***
+ok: [localhost]
+
+TASK [Create link from S4128F-ONFrontView47 to S5224F-ONFrontView69] ***********
+ok: [localhost]
+
+TASK [Create link from S4128F-ONFrontView47 to S5232F-ONFrontView59] ***********
+ok: [localhost]
+
+TASK [Create link from S5212F-ONFrontView(ACPower)30 to N3248TE-ONFrontView77] ***
+ok: [localhost]
+
+TASK [Create link from S5212F-ONFrontView(ACPower)30 to S5212F-ONFrontView(ACPower)66] ***
+ok: [localhost]
+
+TASK [Create link from S5212F-ONFrontView(ACPower)30 to S5224F-ONFrontView69] ***
+ok: [localhost]
+
+TASK [Create link from S5212F-ONFrontView(ACPower)30 to S5232F-ONFrontView59] ***
+ok: [localhost]
+
+TASK [Create link from N3248TE-ONFrontView41 to S5232F-ONFrontView59] **********
+ok: [localhost]
+
+TASK [Create link from N3248TE-ONFrontView41 to S5224F-ONFrontView69] **********
+ok: [localhost]
+
+TASK [Create link from N3248TE-ONFrontView41 to S5212F-ONFrontView(ACPower)66] ***
+ok: [localhost]
+
+TASK [Create link from N3248TE-ONFrontView41 to N3248TE-ONFrontView77] *********
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=20   changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
