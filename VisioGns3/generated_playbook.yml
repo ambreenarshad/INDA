@@ -4,7 +4,7 @@
   gather_facts: no
   vars:
     gns3_server: "http://127.0.0.1:3080"
-    project_name: "Final_Testing_2"
+    project_name: "Final_Testing"
     
   tasks:
     - name: Get all projects from GNS3
@@ -41,7 +41,7 @@
         return_content: yes
       register: gns3_nodes
     
-    - name: Create link from S5224F-ONFrontView33 to N3248TE-ONFrontView77
+    - name: Create link from S4128F-ONFrontView94 to S5212F-ONFrontView(ACPower)72
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -53,33 +53,14 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S5224F-ONFrontView33'] }}"
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
             adapter_number: 0
             port_number: 0
-          - node_id: "{{ device_map['N3248TE-ONFrontView77'] }}"
-            adapter_number: 0
-            port_number: 0
-        
-    - name: Create link from S5224F-ONFrontView33 to S5212F-ONFrontView(ACPower)66
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S5224F-ONFrontView33'] }}"
-            adapter_number: 1
-            port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)66'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
             adapter_number: 0
             port_number: 0
         
-    - name: Create link from S5224F-ONFrontView33 to S5224F-ONFrontView69
+    - name: Create link from N3248TE-ONFrontView88 to S5224F-ONFrontView75
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -91,14 +72,14 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S5224F-ONFrontView33'] }}"
-            adapter_number: 2
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
+            adapter_number: 0
             port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView69'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
             adapter_number: 0
             port_number: 0
         
-    - name: Create link from S5224F-ONFrontView33 to S5232F-ONFrontView59
+    - name: Create link from N3248TE-ONFrontView88 to S5212F-ONFrontView(ACPower)72
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -110,33 +91,14 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S5224F-ONFrontView33'] }}"
-            adapter_number: 3
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
+            adapter_number: 1
             port_number: 0
-          - node_id: "{{ device_map['S5232F-ONFrontView59'] }}"
-            adapter_number: 0
-            port_number: 0
-        
-    - name: Create link from S4128F-ONFrontView47 to N3248TE-ONFrontView77
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView47'] }}"
-            adapter_number: 0
-            port_number: 0
-          - node_id: "{{ device_map['N3248TE-ONFrontView77'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
             adapter_number: 1
             port_number: 0
         
-    - name: Create link from S4128F-ONFrontView47 to S5212F-ONFrontView(ACPower)66
+    - name: Create link from N3248TE-ONFrontView88 to S4128F-ONFrontView94
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -148,33 +110,14 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView47'] }}"
-            adapter_number: 1
-            port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)66'] }}"
-            adapter_number: 1
-            port_number: 0
-        
-    - name: Create link from S4128F-ONFrontView47 to S5224F-ONFrontView69
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView47'] }}"
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
             adapter_number: 2
             port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView69'] }}"
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
             adapter_number: 1
             port_number: 0
         
-    - name: Create link from S4128F-ONFrontView47 to S5232F-ONFrontView59
+    - name: Create link from S4128F-ONFrontView94 to S5224F-ONFrontView75
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -186,14 +129,14 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView47'] }}"
-            adapter_number: 3
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
+            adapter_number: 2
             port_number: 0
-          - node_id: "{{ device_map['S5232F-ONFrontView59'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
             adapter_number: 1
             port_number: 0
         
-    - name: Create link from S5212F-ONFrontView(ACPower)30 to N3248TE-ONFrontView77
+    - name: Create link from S5212F-ONFrontView(ACPower)72 to S5224F-ONFrontView75
       vars:
         device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
       uri:
@@ -205,143 +148,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)30'] }}"
-            adapter_number: 0
-            port_number: 0
-          - node_id: "{{ device_map['N3248TE-ONFrontView77'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
             adapter_number: 2
             port_number: 0
-        
-    - name: Create link from S5212F-ONFrontView(ACPower)30 to S5212F-ONFrontView(ACPower)66
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)30'] }}"
-            adapter_number: 1
-            port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)66'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
             adapter_number: 2
-            port_number: 0
-        
-    - name: Create link from S5212F-ONFrontView(ACPower)30 to S5224F-ONFrontView69
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)30'] }}"
-            adapter_number: 2
-            port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView69'] }}"
-            adapter_number: 2
-            port_number: 0
-        
-    - name: Create link from S5212F-ONFrontView(ACPower)30 to S5232F-ONFrontView59
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)30'] }}"
-            adapter_number: 3
-            port_number: 0
-          - node_id: "{{ device_map['S5232F-ONFrontView59'] }}"
-            adapter_number: 2
-            port_number: 0
-        
-    - name: Create link from N3248TE-ONFrontView41 to S5232F-ONFrontView59
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView41'] }}"
-            adapter_number: 0
-            port_number: 0
-          - node_id: "{{ device_map['S5232F-ONFrontView59'] }}"
-            adapter_number: 3
-            port_number: 0
-        
-    - name: Create link from N3248TE-ONFrontView41 to S5224F-ONFrontView69
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView41'] }}"
-            adapter_number: 1
-            port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView69'] }}"
-            adapter_number: 3
-            port_number: 0
-        
-    - name: Create link from N3248TE-ONFrontView41 to S5212F-ONFrontView(ACPower)66
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView41'] }}"
-            adapter_number: 2
-            port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)66'] }}"
-            adapter_number: 3
-            port_number: 0
-        
-    - name: Create link from N3248TE-ONFrontView41 to N3248TE-ONFrontView77
-      vars:
-        device_map: "{{ gns3_nodes.json | items2dict(key_name='name', value_name='node_id') }}"
-      uri:
-        url: "{{ gns3_server }}/v2/projects/{{ project_id }}/links"
-        method: POST
-        body_format: json
-        headers:
-          Content-Type: application/json
-        status_code: [200, 201]
-        body:
-          nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView41'] }}"
-            adapter_number: 3
-            port_number: 0
-          - node_id: "{{ device_map['N3248TE-ONFrontView77'] }}"
-            adapter_number: 3
             port_number: 0
         
