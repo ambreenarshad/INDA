@@ -125,9 +125,9 @@ def main(pages_xml, masters_xml, output_json):
 
 if __name__ == "__main__":
     # Replace with actual file paths
-    pages_xml = os.path.expanduser("~/INDA/VisioGns3/extracted_vsdx/visio/pages/page1.xml")
-    masters_xml = os.path.expanduser("~/INDA/VisioGns3/extracted_vsdx/visio/masters/masters.xml")
-    output_json = os.path.expanduser("~/INDA/VisioGns3/connections.json")
+    pages_xml = os.path.expanduser("~/INDA/VisioGns3/vsdx/extracted_vsdx/visio/pages/page1.xml")
+    masters_xml = os.path.expanduser("~/INDA/VisioGns3/vsdx/extracted_vsdx/visio/masters/masters.xml")
+    output_json = os.path.expanduser("~/INDA/VisioGns3/Generated_files/Connections.json")
     
     main(pages_xml, masters_xml, output_json)
 

@@ -75,9 +75,9 @@ def extract_machine_names(pages_xml, masters_xml, output_txt):
 
 if __name__ == "__main__":
     # Define file paths
-    pages_xml = os.path.expanduser("~/INDA/VisioGns3/extracted_vsdx/visio/pages/page1.xml")
-    masters_xml = os.path.expanduser("~/INDA/VisioGns3/extracted_vsdx/visio/masters/masters.xml")
-    output_txt = os.path.expanduser("~/INDA/VisioGns3/machine_names.txt")
+    pages_xml = os.path.expanduser("~/INDA/VisioGns3/vsdx/extracted_vsdx/visio/pages/page1.xml")
+    masters_xml = os.path.expanduser("~/INDA/VisioGns3/vsdx/extracted_vsdx/visio/masters/masters.xml")
+    output_txt = os.path.expanduser("~/INDA/VisioGns3/Generated_files/machine_names.txt")
 
     extract_machine_names(pages_xml, masters_xml, output_txt)
 

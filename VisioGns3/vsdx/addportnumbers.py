@@ -31,7 +31,7 @@ def add_adapter_numbers_to_json(input_file, output_file):
         json.dump(data, f, indent=4)
 
 # Example usage
-input_file = os.path.expanduser("~/INDA/VisioGns3/connections.json")   # Replace with your input JSON file path
-output_file = os.path.expanduser("~/INDA/VisioGns3/connections.json") # Replace with your desired output file path
+input_file = os.path.expanduser("~/INDA/VisioGns3/Generated_files/Connections.json")   # Replace with your input JSON file path
+output_file = os.path.expanduser("~/INDA/VisioGns3/Generated_files/Connections.json") # Replace with your desired output file path
 
 add_adapter_numbers_to_json(input_file, output_file)

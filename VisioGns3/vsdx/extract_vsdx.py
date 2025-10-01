@@ -58,7 +58,7 @@ def main():
     save_vsdx_path(latest_vsdx)
 
     # Directory to extract the contents
-    extract_dir = os.path.expanduser("~/INDA/VisioGns3/extracted_vsdx")
+    extract_dir = os.path.expanduser("~/INDA/VisioGns3/vsdx/extracted_vsdx")
 
     # Ensure the extraction directory exists
     os.makedirs(extract_dir, exist_ok=True)

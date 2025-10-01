@@ -47,7 +47,7 @@ def select_file_and_extract():
 
         with open(output_path, "w") as f:
             for name in machines:
-                f.write(name + "\n")
+                f.write("xml_" +name + "\n")
 
         messagebox.showinfo("Success", f"Machine names saved to:\n{output_path}")
     except Exception as e:

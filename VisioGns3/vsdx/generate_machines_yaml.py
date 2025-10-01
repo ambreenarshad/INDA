@@ -5,11 +5,14 @@ import yaml
 import math
 
 # File paths
-GNS3_SERVER_DETAILS = "gns3_server_details.txt"  # Contains GNS3 IP and port
-TEMPLATES_JSON = "gns3_templates.json"  # Contains templates info
-MACHINE_NAMES_TXT = "machine_names.txt"  # Contains machine names
-OUTPUT_YAML = "gns3_topology.yaml"  # Output YAML file
-vsdx_file_path = "vsdx_path.txt"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
+
+GNS3_SERVER_DETAILS = os.path.join(BASE_DIR, "Generated_files", "gns3_server_details.txt")
+TEMPLATES_JSON = os.path.join(BASE_DIR, "Generated_files", "gns3_templates.json")
+MACHINE_NAMES_TXT = os.path.join(BASE_DIR, "Generated_files", "machine_names.txt")
+VSDX_FILE_PATH = os.path.join(BASE_DIR, "vsdx_path.txt")
+
+OUTPUT_YAML = os.path.join(BASE_DIR, "Main_playbooks", "Gns3_Machines.yaml")
 
 # Default coordinates for devices
 X_START = 100
@@ -17,12 +20,12 @@ Y_START = 100
 X_INCREMENT = 50
 Y_INCREMENT = 50
 
+
 def read_vsdx_path():
     """Read the saved VSDX file path from the 'vsdx_path' file."""
-    with open("vsdx_path.txt", "r") as file:
+    with open(VSDX_FILE_PATH, "r") as file:
         vsdx_file_path = file.read().strip()
     return vsdx_file_path
-
 def get_project_name_from_vsdx(vsdx_path):
     """Extract the project name from the VSDX file name without the extension."""
     return os.path.splitext(os.path.basename(vsdx_path))[0]
@@ -73,6 +76,7 @@ def find_template(machine_name, templates):
     """
     Finds the template for the given machine name by matching its normalized name.
     """
+
     normalized_machine_name = normalize_name(machine_name)
     print(f"Normalized Machine Name: {normalized_machine_name}")
     for template_name, template_data in templates.items():

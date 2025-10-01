@@ -53,10 +53,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] | default('') }}"
             adapter_number: 0
             port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] | default('') }}"
             adapter_number: 0
             port_number: 0
         
@@ -72,10 +72,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] | default('') }}"
             adapter_number: 0
             port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] | default('') }}"
             adapter_number: 0
             port_number: 0
         
@@ -91,10 +91,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] | default('') }}"
             adapter_number: 1
             port_number: 0
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] | default('') }}"
             adapter_number: 1
             port_number: 0
         
@@ -110,10 +110,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['N3248TE-ONFrontView88'] }}"
+          - node_id: "{{ device_map['N3248TE-ONFrontView88'] | default('') }}"
             adapter_number: 2
             port_number: 0
-          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] | default('') }}"
             adapter_number: 1
             port_number: 0
         
@@ -129,10 +129,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S4128F-ONFrontView94'] }}"
+          - node_id: "{{ device_map['S4128F-ONFrontView94'] | default('') }}"
             adapter_number: 2
             port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] | default('') }}"
             adapter_number: 1
             port_number: 0
         
@@ -148,10 +148,10 @@
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] }}"
+          - node_id: "{{ device_map['S5212F-ONFrontView(ACPower)72'] | default('') }}"
             adapter_number: 2
             port_number: 0
-          - node_id: "{{ device_map['S5224F-ONFrontView75'] }}"
+          - node_id: "{{ device_map['S5224F-ONFrontView75'] | default('') }}"
             adapter_number: 2
             port_number: 0
         

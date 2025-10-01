@@ -1,7 +1,16 @@
 import json
 import os
 
-GNS3_SERVER_DETAILS = "gns3_server_details.txt"
+# Base directory (root of your project)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
+
+# Paths (adjusted to your folder structure)
+GENERATED_DIR = os.path.join(BASE_DIR, "Generated_files")
+GNS3_SERVER_DETAILS = os.path.join(GENERATED_DIR, "gns3_server_details.txt")
+VSDX_PATH_FILE = os.path.join(BASE_DIR, "vsdx_path.txt")
+CONNECTIONS_FILE = os.path.join(GENERATED_DIR, "Connections.json")
+OUTPUT_PLAYBOOK = os.path.join(BASE_DIR, "Main_playbooks", "Gns3_Connections.yaml")
+
 
 def read_gns3_server_details(file_path):
     """Reads the GNS3 server details (IP and port) from the text file."""
@@ -14,15 +23,21 @@ def read_gns3_server_details(file_path):
     except Exception as e:
         raise RuntimeError(f"Failed to read GNS3 server details: {e}")
 
+
 def read_vsdx_path():
-    """Read the saved VSDX file path from the 'vsdx_path' file."""
-    with open("vsdx_path.txt", "r") as file:
-        vsdx_file_path = file.read().strip()
-    return vsdx_file_path
+    """Read the saved VSDX file path from the 'vsdx_path.txt' file."""
+    try:
+        with open(VSDX_PATH_FILE, "r") as file:
+            vsdx_file_path = file.read().strip()
+        return vsdx_file_path
+    except Exception as e:
+        raise RuntimeError(f"Failed to read vsdx path: {e}")
+
 
 def get_project_name_from_vsdx(vsdx_path):
     """Extract the project name from the VSDX file name without the extension."""
     return os.path.splitext(os.path.basename(vsdx_path))[0]
+
 
 def generate_ansible_playbook(ip, port, connections_file, project_name):
     # Load the JSON data
@@ -94,10 +109,10 @@ def generate_ansible_playbook(ip, port, connections_file, project_name):
         status_code: [200, 201]
         body:
           nodes:
-          - node_id: "{{{{ device_map['{from_device}'] }}}}"
+          - node_id: "{{{{ device_map['{from_device}'] | default('') }}}}"
             adapter_number: {from_adapter_number}
             port_number: 0
-          - node_id: "{{{{ device_map['{to_device}'] }}}}"
+          - node_id: "{{{{ device_map['{to_device}'] | default('') }}}}"
             adapter_number: {to_adapter_number}
             port_number: 0
         """
@@ -105,21 +120,17 @@ def generate_ansible_playbook(ip, port, connections_file, project_name):
     return playbook
 
 
-# Example usage:
 if __name__ == "__main__":
-    connections_file = os.path.expanduser("~/INDA/VisioGns3/connections.json")  # path to your JSON file
-   
     ip, port = read_gns3_server_details(GNS3_SERVER_DETAILS)
     print(f"Using GNS3 server: IP={ip}, Port={port}")
     
     vsdx_file_path = read_vsdx_path()
     project_name = get_project_name_from_vsdx(vsdx_file_path)
 
-    ansible_playbook = generate_ansible_playbook(ip, port, connections_file, project_name)
+    ansible_playbook = generate_ansible_playbook(ip, port, CONNECTIONS_FILE, project_name)
 
     # Write the playbook to a YAML file
-    with open('generated_playbook.yml', 'w') as file:
+    with open(OUTPUT_PLAYBOOK, 'w') as file:
         file.write(ansible_playbook)
 
-    print("Ansible playbook generated successfully.")
-
+    print(f"Ansible playbook generated successfully: {OUTPUT_PLAYBOOK}")
