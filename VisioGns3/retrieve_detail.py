@@ -3,10 +3,15 @@ import os
 import re
 import subprocess
 
+
+# Base directory for VisioGns3
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Paths to files
 GNS3_CONF_PATH = os.path.expanduser("~/.config/GNS3/2.2/gns3_server.conf")
-OUTPUT_JSON_FILE = "gns3_templates.json"
-SERVER_DETAILS_FILE = "gns3_server_details.txt"
+
+OUTPUT_JSON_FILE = os.path.join(BASE_DIR, "Generated_files", "gns3_templates.json")
+SERVER_DETAILS_FILE = os.path.join(BASE_DIR, "Generated_files", "gns3_server_details.txt")
 
 def get_gns3_server_details(conf_path):
     """
