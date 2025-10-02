@@ -5,12 +5,12 @@ import yaml
 import math
 
 # File paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path to VisioGns3
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 
 GNS3_SERVER_DETAILS = os.path.join(BASE_DIR, "Generated_files", "gns3_server_details.txt")
 TEMPLATES_JSON = os.path.join(BASE_DIR, "Generated_files", "gns3_templates.json")
 MACHINE_NAMES_TXT = os.path.join(BASE_DIR, "Generated_files", "machine_names.txt")
-VSDX_FILE_PATH = os.path.join(BASE_DIR, "Generated_files", "vsdx_path.txt")
+VSDX_FILE_PATH = os.path.join(BASE_DIR, "vsdx_path.txt")
 
 OUTPUT_YAML = os.path.join(BASE_DIR, "Main_playbooks", "Gns3_Machines.yaml")
 
@@ -22,8 +22,10 @@ Y_INCREMENT = 50
 
 GENERIC_TEMPLATE_MAPPING = { 
     "router": "Dell OS10 N3248TE-10.5.5.5.105", 
+    "10700": "Dell OS10 N3248TE-10.5.5.5.105",
     "switch": "Ethernet switch",
     "terminal": "VPCS", 
+    "pc": "VPCS",
     "cloud": "Cloud", 
     "nat": "NAT", 
     "hub": "Ethernet hub", 
@@ -33,7 +35,7 @@ GENERIC_TEMPLATE_MAPPING = {
 
 def read_vsdx_path():
     """Read the saved VSDX file path from the 'vsdx_path' file."""
-    with open("vsdx_path.txt", "r") as file:
+    with open(VSDX_FILE_PATH, "r") as file:
         vsdx_file_path = file.read().strip()
     return vsdx_file_path
 
@@ -88,22 +90,22 @@ def find_template(machine_name, templates):
     Finds the template for the given machine name by matching its normalized name.
     """
     # --- xml_ prefixed machines --- 
-    if machine_name.startswith("xml_"): 
-      base_name = machine_name[len("xml_"):].lower()
-      for keyword, mapped_template_name in GENERIC_TEMPLATE_MAPPING.items():
-          if keyword in base_name:
-              print(f"[GENERIC] Match found: {keyword} -> {mapped_template_name}")
-              # Now resolve this mapped_template_name in the real templates
-              normalized_mapped = normalize_name(mapped_template_name)
-              for template_name, template_data in templates.items():
-                  normalized_template_name = normalize_name(template_name)
-                  if (normalized_mapped in normalized_template_name or normalized_template_name in normalized_mapped):
-                      print(f"[GENERIC] Resolved to actual template: {template_name}")
-                      return template_data
-              print(f"[GENERIC] No actual GNS3 template found for: {mapped_template_name}")
-              return None
-      print(f"[GENERIC] No generic mapping found for: {machine_name}")
-      return None
+  
+    base_name = machine_name.lower()
+    for keyword, mapped_template_name in GENERIC_TEMPLATE_MAPPING.items():
+        if keyword in base_name:
+            print(f"[GENERIC] Match found: {keyword} -> {mapped_template_name}")
+            # Now resolve this mapped_template_name in the real templates
+            normalized_mapped = normalize_name(mapped_template_name)
+            for template_name, template_data in templates.items():
+                normalized_template_name = normalize_name(template_name)
+                if (normalized_mapped in normalized_template_name or normalized_template_name in normalized_mapped):
+                    print(f"[GENERIC] Resolved to actual template: {template_name}")
+                    return template_data
+            print(f"[GENERIC] No actual GNS3 template found for: {mapped_template_name}")
+            return None
+    print(f"[GENERIC] No generic mapping found for: {machine_name}")
+    return None
 
 
 def nearest_square_number(count):
