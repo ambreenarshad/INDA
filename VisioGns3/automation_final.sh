@@ -61,6 +61,11 @@ case "$EXT" in
     echo "➡️ Generating Machines YAML"
     python3 generate_machines_yaml_xml.py
 
+    echo "➡️ Running ListConnections.py"
+    python3 ListConnections_xml.py
+
+    echo "➡️ Running generatePlaybook.py"
+    python3 generate_connections_yaml_xml.py
 
     # Add extra XML-specific steps here
     echo "⚠️ XML pipeline not fully implemented yet"

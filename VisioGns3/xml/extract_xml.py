@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import os
+from collections import defaultdict
 
 # Function to get the latest .xml file and list of older files
 def get_latest_xml_file():
@@ -45,20 +46,37 @@ def extract_machine_names(xml_file):
     root = tree.getroot()
 
     machine_names = []
+    name_counter = defaultdict(int)
+
     for cell in root.findall(".//mxCell"):
         style = cell.get("style", "")
         value = cell.get("value", "").strip()
+
+        # Check for all Cisco device types
         if any(keyword in style for keyword in [
             "mxgraph.cisco.routers",
             "mxgraph.cisco.switches",
-            "mxgraph.cisco.computers_and_peripherals"
+            "mxgraph.cisco.computers_and_peripherals",
+            "mxgraph.cisco.servers",
+            "mxgraph.cisco.storage",
+            "mxgraph.cisco.hubs_and_gateways"
         ]):
-            if value:  # visible label
-                machine_names.append(value)
+            if value:  # Use visible label if available
+                base_name = value
             else:
+                # Extract device type from style
                 base = style.split(";")[0]
-                base = base.split(".")[-1]
-                machine_names.append(base)
+                base_name = base.split(".")[-1]
+
+            # Count duplicates
+            name_counter[base_name] += 1
+            if name_counter[base_name] > 1:
+                machine_name = f"{base_name}-{name_counter[base_name]}"
+            else:
+                machine_name = base_name
+
+            machine_names.append(machine_name)
+
     return machine_names
 
 def main():
@@ -91,6 +109,7 @@ def main():
                 f.write(name + "\n")
 
         print(f"Machine names saved to: {output_path}")
+        print(f"Total devices found: {len(machines)}")
     except Exception as e:
         print(f"Error processing XML: {e}")
 
