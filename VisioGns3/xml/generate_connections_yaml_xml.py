@@ -97,7 +97,7 @@ def generate_ansible_playbook(ip, port, connections_file, project_name):
 
         # Check if device is Ethernet switch/hub
         def is_switch_or_hub(name):
-            return any(keyword in name.lower() for keyword in ["atm_switch","hub"])
+            return any(keyword in name.lower() for keyword in ["atm_switch","hub","atm_fast_gigabit_etherswitch"])
 
         if is_switch_or_hub(from_device):
             from_adapter = 0
