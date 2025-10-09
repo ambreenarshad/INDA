@@ -1,86 +1,104 @@
 [
     {
-        "from": "atm_router",
-        "to": "atm_fast_gigabit_etherswitch-3",
+        "from": "10700",
+        "to": "atm_switch",
         "from_adapter_number": 0,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_fast_gigabit_etherswitch-2",
-        "to": "terminal-2",
+        "from": "10700-3",
+        "to": "10700-2",
         "from_adapter_number": 0,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router-2",
-        "to": "atm_fast_gigabit_etherswitch-5",
-        "from_adapter_number": 0,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_fast_gigabit_etherswitch-5",
-        "to": "terminal-5",
+        "from": "10700-3",
+        "to": "atm_switch-4",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router",
-        "to": "atm_fast_gigabit_etherswitch",
+        "from": "10700-3",
+        "to": "10700-4",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "10700-4",
+        "to": "atm_switch-2",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router",
-        "to": "atm_fast_gigabit_etherswitch-2",
+        "from": "atm_switch",
+        "to": "pc-2",
+        "from_adapter_number": 1,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch",
+        "to": "pc",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-2",
+        "to": "pc-8",
+        "from_adapter_number": 1,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-2",
+        "to": "pc-7",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-3",
+        "to": "pc-6",
+        "from_adapter_number": 0,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-4",
+        "to": "pc-4",
+        "from_adapter_number": 1,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "10700",
+        "to": "10700-3",
+        "from_adapter_number": 1,
+        "to_adapter_number": 3
+    },
+    {
+        "from": "10700",
+        "to": "10700-4",
+        "from_adapter_number": 2,
+        "to_adapter_number": 2
+    },
+    {
+        "from": "10700-4",
+        "to": "10700-2",
+        "from_adapter_number": 3,
+        "to_adapter_number": 1
+    },
+    {
+        "from": "atm_switch-4",
+        "to": "pc-3",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "10700-2",
+        "to": "atm_switch-3",
         "from_adapter_number": 2,
         "to_adapter_number": 1
     },
     {
-        "from": "atm_router-2",
-        "to": "atm_fast_gigabit_etherswitch-4",
-        "from_adapter_number": 1,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_router-2",
-        "to": "atm_fast_gigabit_etherswitch-6",
+        "from": "atm_switch-3",
+        "to": "pc-5",
         "from_adapter_number": 2,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_router-3",
-        "to": "atm_router",
-        "from_adapter_number": 0,
-        "to_adapter_number": 3
-    },
-    {
-        "from": "atm_router-3",
-        "to": "atm_router-2",
-        "from_adapter_number": 1,
-        "to_adapter_number": 3
-    },
-    {
-        "from": "atm_fast_gigabit_etherswitch",
-        "to": "terminal",
-        "from_adapter_number": 1,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_fast_gigabit_etherswitch-3",
-        "to": "terminal-3",
-        "from_adapter_number": 1,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_fast_gigabit_etherswitch-4",
-        "to": "terminal-4",
-        "from_adapter_number": 1,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_fast_gigabit_etherswitch-6",
-        "to": "terminal-6",
-        "from_adapter_number": 1,
         "to_adapter_number": 0
     }
 ]

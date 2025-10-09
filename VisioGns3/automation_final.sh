@@ -78,8 +78,17 @@ case "$EXT" in
     echo "➡️ Running extract_svg.py"
     python3 extract_svg.py
 
-    # Add extra SVG-specific steps here
-    echo "⚠️ SVG pipeline not fully implemented yet"
+    echo "➡️ Generating Machines YAML"
+    python3 generate_machines_yaml_svg.py
+
+    echo "➡️ Running ListConnections.py"
+    python3 ListConnections_svg.py
+
+    echo "➡️ Running generatePlaybook.py"
+    python3 generate_connections_yaml_svg.py
+
+    # Add extra XML-specific steps here
+    echo "⚠️ XML pipeline not fully implemented yet"
     ;;
 
   *)
