@@ -3,7 +3,7 @@ import os
 import subprocess
 from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, 
                               QPushButton, QLabel, QLineEdit, QTextEdit, 
-                              QFileDialog, QFrame, QStackedWidget, QScrollArea)
+                              QFileDialog, QMessageBox, QFrame, QStackedWidget, QScrollArea)
 from PyQt6.QtGui import QPalette, QColor, QFont
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
 
@@ -12,6 +12,7 @@ GNS3_CONF_PATH = os.path.expanduser("~/.config/GNS3/2.2/gns3_server.conf")
 
 class WorkerThread(QThread):
     output_signal = pyqtSignal(str)
+    finished_signal = pyqtSignal()  # NEW: Signal when automation completes
 
     def __init__(self, script_path):
         super().__init__()
@@ -27,6 +28,8 @@ class WorkerThread(QThread):
 
         process.stdout.close()
         process.wait()
+        # NEW: Emit finished signal when automation completes
+        self.finished_signal.emit()
 
 
 class VisioGNS3App(QWidget):
@@ -423,7 +426,7 @@ class VisioGNS3App(QWidget):
         ip_label.setStyleSheet("color: white; font-size: 14px; font-weight: bold;")
         
         self.input_ip = QLineEdit()
-        self.input_ip.setPlaceholderText("e.g., 192.168.1.100")
+        self.input_ip.setPlaceholderText("e.g., 127.0.0.1")
         self.input_ip.setStyleSheet("""
             QLineEdit {
                 background-color: #2D3748;
@@ -627,8 +630,21 @@ class VisioGNS3App(QWidget):
             self.output_text.append(f"❌ Error saving configuration: {e}")
 
     def upload_file(self):
+
         file_path, _ = QFileDialog.getOpenFileName(self, "Select a File", "", "All Files (*)")
         if file_path:
+            # --- File extension validation ---
+            valid_extensions = (".vsdx", ".xml", ".svg")
+            if not file_path.lower().endswith(valid_extensions):
+                QMessageBox.critical(self, "Invalid File", 
+                                    "❌ Only .vsdx, .xml, or .svg files are allowed.\nPlease upload a valid file.")
+                self.file_label.setText("No file selected.")
+                self.file_label.setStyleSheet("color: #A0AEC0; font-size: 13px;")
+                self.output_text.append("❌ Invalid file type. Please upload a .vsdx, .xml, or .svg file.")
+                self.selected_file = None
+                return
+            # ----------------------------------
+
             self.selected_file = file_path
             filename = os.path.basename(file_path)
             self.file_label.setText(filename)
@@ -639,6 +655,7 @@ class VisioGNS3App(QWidget):
             os.system(f"cp '{file_path}' '{upload_folder}'")
             self.output_text.append(f"✅ File uploaded: {filename}")
 
+
     def run_script(self):
         script_path = os.path.expanduser("~/INDA/VisioGns3/automation_final.sh")
         
@@ -647,12 +664,28 @@ class VisioGNS3App(QWidget):
 
         self.worker = WorkerThread(script_path)
         self.worker.output_signal.connect(self.update_output)
+        self.worker.finished_signal.connect(self.on_automation_finished)  # NEW: Connect finished signal
         self.worker.start()
 
     def update_output(self, text):
         self.output_text.append(text)
         self.output_text.ensureCursorVisible()
-
+        
+    # NEW: Method to handle automation completion
+    def on_automation_finished(self):
+        """Clear input fields when automation completes"""
+        self.output_text.append("\n✅ Automation completed successfully!")
+        
+        # Clear IP and Port fields
+        self.input_ip.clear()
+        self.input_port.clear()
+        
+        # Clear file selection
+        self.selected_file = None
+        self.file_label.setText("No file selected.")
+        self.file_label.setStyleSheet("color: #A0AEC0; font-size: 13px;")
+        
+        self.output_text.append("🧹 Input fields cleared and ready for next task.")
 
 # Run the application
 if __name__ == "__main__":

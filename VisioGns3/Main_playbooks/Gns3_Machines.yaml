@@ -13,7 +13,7 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "d1.drawio"
+            "name": "d3.drawio"
           }
         body_format: json
         return_content: yes
@@ -24,7 +24,7 @@
       debug:
         var: project_result
 
-    - name: Add 10700 to the project
+    - name: Add communications_server to the project
       uri:
         url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
         method: POST
@@ -32,13 +32,13 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "10700",
+            "name": "communications_server",
             "x": 100,
             "y": 100,
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "2ba077ef-894f-4575-9e6d-2c2fb6e423f4",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -63,11 +63,11 @@
         status_code: 201
       register: machine_result
 
-    - name: Debug 10700 creation result
+    - name: Debug communications_server creation result
       debug:
         var: machine_result
 
-    - name: Add 10700-2 to the project
+    - name: Add communications_server-2 to the project
       uri:
         url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
         method: POST
@@ -75,13 +75,13 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "10700-2",
+            "name": "communications_server-2",
             "x": 150,
             "y": 100,
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "2ba077ef-894f-4575-9e6d-2c2fb6e423f4",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -106,11 +106,11 @@
         status_code: 201
       register: machine_result
 
-    - name: Debug 10700-2 creation result
+    - name: Debug communications_server-2 creation result
       debug:
         var: machine_result
 
-    - name: Add 10700-3 to the project
+    - name: Add communications_server-3 to the project
       uri:
         url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
         method: POST
@@ -118,13 +118,13 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "10700-3",
+            "name": "communications_server-3",
             "x": 200,
             "y": 100,
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "2ba077ef-894f-4575-9e6d-2c2fb6e423f4",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -149,11 +149,11 @@
         status_code: 201
       register: machine_result
 
-    - name: Debug 10700-3 creation result
+    - name: Debug communications_server-3 creation result
       debug:
         var: machine_result
 
-    - name: Add 10700-4 to the project
+    - name: Add atm_router to the project
       uri:
         url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
         method: POST
@@ -161,13 +161,13 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "10700-4",
+            "name": "atm_router",
             "x": 250,
             "y": 100,
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "2ba077ef-894f-4575-9e6d-2c2fb6e423f4",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -192,7 +192,265 @@
         status_code: 201
       register: machine_result
 
-    - name: Debug 10700-4 creation result
+    - name: Debug atm_router creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-2 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-2",
+            "x": 300,
+            "y": 100,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-2 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-3 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-3",
+            "x": 350,
+            "y": 100,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-3 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-4 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-4",
+            "x": 400,
+            "y": 100,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-4 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-5 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-5",
+            "x": 450,
+            "y": 100,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-5 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-6 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-6",
+            "x": 100,
+            "y": 150,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-6 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_router-7 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_router-7",
+            "x": 150,
+            "y": 150,
+            "compute_id": "local",
+            "node_type": "qemu",
+            "symbol": ":/symbols/router.svg",
+            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "first_port_name": "mgmt 1/1/1",
+            "port_name_format": "eth 1/1/{port1}",
+            "properties": {
+              "adapter_type": "e1000",
+              "adapters": 10,
+              "console_type": "telnet",
+              "cpus": 1,
+              "hda_disk_image": "OS10-Disk-1.0.0.vmdk",
+              "hda_disk_interface": "sata",
+              "hdb_disk_image": "OS10-Installer-10.5.5.5.105.vmdk",
+              "hdb_disk_interface": "virtio",
+              "hdc_disk_image": "OS10-platform-N3248TE-10.5.5.5.105.vmdk",
+              "hdc_disk_interface": "virtio",
+              "ram": 4096,
+              "boot_priority": "d",
+              "qemu_path": "/bin/qemu-system-x86_64",
+              "replicate_network_connection_state": true
+            }
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_router-7 creation result
       debug:
         var: machine_result
 
@@ -205,7 +463,7 @@
         body: |
           {
             "name": "atm_switch",
-            "x": 100,
+            "x": 200,
             "y": 150,
             "compute_id": "local",
             "node_type": "ethernet_switch",
@@ -230,7 +488,7 @@
         body: |
           {
             "name": "atm_switch-2",
-            "x": 150,
+            "x": 250,
             "y": 150,
             "compute_id": "local",
             "node_type": "ethernet_switch",
@@ -255,7 +513,7 @@
         body: |
           {
             "name": "atm_switch-3",
-            "x": 200,
+            "x": 300,
             "y": 150,
             "compute_id": "local",
             "node_type": "ethernet_switch",
@@ -280,7 +538,7 @@
         body: |
           {
             "name": "atm_switch-4",
-            "x": 250,
+            "x": 350,
             "y": 150,
             "compute_id": "local",
             "node_type": "ethernet_switch",
@@ -296,6 +554,356 @@
       debug:
         var: machine_result
 
+    - name: Add atm_switch-5 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-5",
+            "x": 400,
+            "y": 150,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-5 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-6 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-6",
+            "x": 450,
+            "y": 150,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-6 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-7 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-7",
+            "x": 100,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-7 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-8 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-8",
+            "x": 150,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-8 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-9 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-9",
+            "x": 200,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-9 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-10 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-10",
+            "x": 250,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-10 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-11 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-11",
+            "x": 300,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-11 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-12 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-12",
+            "x": 350,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-12 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-13 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-13",
+            "x": 400,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-13 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-14 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-14",
+            "x": 450,
+            "y": 200,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-14 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-15 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-15",
+            "x": 100,
+            "y": 250,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-15 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-16 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-16",
+            "x": 150,
+            "y": 250,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-16 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-17 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-17",
+            "x": 200,
+            "y": 250,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-17 creation result
+      debug:
+        var: machine_result
+
+    - name: Add atm_switch-18 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "atm_switch-18",
+            "x": 250,
+            "y": 250,
+            "compute_id": "local",
+            "node_type": "ethernet_switch",
+            "symbol": ":/symbols/ethernet_switch.svg",
+            "template_id": "1966b864-93e7-32d5-965f-001384eec461"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug atm_switch-18 creation result
+      debug:
+        var: machine_result
+
     - name: Add pc to the project
       uri:
         url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
@@ -305,8 +913,8 @@
         body: |
           {
             "name": "pc",
-            "x": 100,
-            "y": 200,
+            "x": 300,
+            "y": 250,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -330,8 +938,8 @@
         body: |
           {
             "name": "pc-2",
-            "x": 150,
-            "y": 200,
+            "x": 350,
+            "y": 250,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -355,8 +963,8 @@
         body: |
           {
             "name": "pc-3",
-            "x": 200,
-            "y": 200,
+            "x": 400,
+            "y": 250,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -380,8 +988,8 @@
         body: |
           {
             "name": "pc-4",
-            "x": 250,
-            "y": 200,
+            "x": 450,
+            "y": 250,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -406,7 +1014,7 @@
           {
             "name": "pc-5",
             "x": 100,
-            "y": 250,
+            "y": 300,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -431,7 +1039,7 @@
           {
             "name": "pc-6",
             "x": 150,
-            "y": 250,
+            "y": 300,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -456,7 +1064,7 @@
           {
             "name": "pc-7",
             "x": 200,
-            "y": 250,
+            "y": 300,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -481,7 +1089,7 @@
           {
             "name": "pc-8",
             "x": 250,
-            "y": 250,
+            "y": 300,
             "compute_id": "local",
             "node_type": "vpcs",
             "symbol": ":/symbols/vpcs_guest.svg",
@@ -493,5 +1101,830 @@
       register: machine_result
 
     - name: Debug pc-8 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-9 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-9",
+            "x": 300,
+            "y": 300,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-9 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-10 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-10",
+            "x": 350,
+            "y": 300,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-10 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-11 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-11",
+            "x": 400,
+            "y": 300,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-11 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-12 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-12",
+            "x": 450,
+            "y": 300,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-12 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-13 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-13",
+            "x": 100,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-13 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-14 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-14",
+            "x": 150,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-14 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-15 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-15",
+            "x": 200,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-15 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-16 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-16",
+            "x": 250,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-16 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-17 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-17",
+            "x": 300,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-17 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-18 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-18",
+            "x": 350,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-18 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-19 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-19",
+            "x": 400,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-19 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-20 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-20",
+            "x": 450,
+            "y": 350,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-20 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-21 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-21",
+            "x": 100,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-21 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-22 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-22",
+            "x": 150,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-22 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-23 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-23",
+            "x": 200,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-23 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-24 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-24",
+            "x": 250,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-24 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-25 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-25",
+            "x": 300,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-25 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-26 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-26",
+            "x": 350,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-26 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-27 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-27",
+            "x": 400,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-27 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-28 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-28",
+            "x": 450,
+            "y": 400,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-28 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-29 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-29",
+            "x": 100,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-29 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-30 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-30",
+            "x": 150,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-30 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-31 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-31",
+            "x": 200,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-31 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-32 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-32",
+            "x": 250,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-32 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-33 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-33",
+            "x": 300,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-33 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-34 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-34",
+            "x": 350,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-34 creation result
+      debug:
+        var: machine_result
+
+    - name: Add cloud to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "cloud",
+            "x": 400,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "cloud",
+            "symbol": ":/symbols/cloud.svg",
+            "template_id": "39e257dc-8412-3174-b6b3-0ee3ed6a43e9"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug cloud creation result
+      debug:
+        var: machine_result
+
+    - name: Add hub to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "hub",
+            "x": 450,
+            "y": 450,
+            "compute_id": "local",
+            "node_type": "ethernet_hub",
+            "symbol": ":/symbols/hub.svg",
+            "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug hub creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-35 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-35",
+            "x": 100,
+            "y": 500,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-35 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-36 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-36",
+            "x": 150,
+            "y": 500,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-36 creation result
+      debug:
+        var: machine_result
+
+    - name: Add hub-2 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "hub-2",
+            "x": 200,
+            "y": 500,
+            "compute_id": "local",
+            "node_type": "ethernet_hub",
+            "symbol": ":/symbols/hub.svg",
+            "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug hub-2 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-37 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-37",
+            "x": 250,
+            "y": 500,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-37 creation result
+      debug:
+        var: machine_result
+
+    - name: Add pc-38 to the project
+      uri:
+        url: "{{ gns3_url }}/v2/projects/{{ project_result.json.project_id }}/nodes"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "name": "pc-38",
+            "x": 300,
+            "y": 500,
+            "compute_id": "local",
+            "node_type": "vpcs",
+            "symbol": ":/symbols/vpcs_guest.svg",
+            "template_id": "19021f99-e36f-394d-b4a1-8aaa902ab9cc"
+          }
+        body_format: json
+        return_content: yes
+        status_code: 201
+      register: machine_result
+
+    - name: Debug pc-38 creation result
       debug:
         var: machine_result
