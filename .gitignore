@@ -1,0 +1,37 @@
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.log
+
+# ---- Virtual Environments ----
+venv/
+.env/
+ENV/
+env/
+
+# ---- Build & Distribution ----
+build/
+dist/
+*.egg-info/
+
+# ---- IDE / Editor Files ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ---- OS Files ----
+Thumbs.db
+
+# ---- PyInstaller / Packaging ----
+*.spec
+
+# ---- Jupyter / Notebooks ----
+.ipynb_checkpoints/
+
+# ---- Local config ----
+*.local
+*.cfg
