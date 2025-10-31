@@ -31,7 +31,7 @@ GENERIC_TEMPLATE_MAPPING = {
     "hub": "Ethernet hub", 
     "frame_relay": "Frame Relay switch", 
     "atm": "ATM switch", 
-    "server" : "Dell OS10 N3248TE-10.5.5.5.105"
+    "server" : "Alpine Linux Virt 3.18.4"
 }
 
 def read_vsdx_path():
