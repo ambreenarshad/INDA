@@ -1,121 +1,103 @@
 [
     {
-        "from": "atm_router",
-        "to": "atm_router-5",
+        "from": "10700",
+        "to": "atm_switch",
         "from_adapter_number": 0,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router",
-        "to": "atm_router-2",
+        "from": "10700-3",
+        "to": "10700-2",
+        "from_adapter_number": 0,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "10700-3",
+        "to": "atm_switch-4",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router",
-        "to": "atm_router-4",
+        "from": "10700-3",
+        "to": "10700-4",
         "from_adapter_number": 2,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router",
-        "to": "atm_router-3",
-        "from_adapter_number": 3,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_router-2",
-        "to": "hub",
+        "from": "10700-4",
+        "to": "atm_switch-2",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router-3",
-        "to": "hub-3",
+        "from": "atm_switch",
+        "to": "pc-2",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "atm_router-5",
-        "to": "atm_router-2",
-        "from_adapter_number": 1,
-        "to_adapter_number": 2
-    },
-    {
-        "from": "atm_router-4",
-        "to": "atm_router-2",
-        "from_adapter_number": 1,
-        "to_adapter_number": 3
-    },
-    {
-        "from": "atm_router-5",
-        "to": "atm_router-3",
-        "from_adapter_number": 2,
-        "to_adapter_number": 2
-    },
-    {
-        "from": "atm_router-4",
-        "to": "atm_router-3",
-        "from_adapter_number": 2,
-        "to_adapter_number": 3
-    },
-    {
-        "from": "hub",
-        "to": "pc-7",
-        "from_adapter_number": 1,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "hub",
-        "to": "pc-8",
-        "from_adapter_number": 2,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "hub-2",
+        "from": "atm_switch",
         "to": "pc",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-2",
+        "to": "pc-8",
+        "from_adapter_number": 1,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-2",
+        "to": "pc-7",
+        "from_adapter_number": 2,
+        "to_adapter_number": 0
+    },
+    {
+        "from": "atm_switch-3",
+        "to": "pc-6",
         "from_adapter_number": 0,
         "to_adapter_number": 0
     },
     {
-        "from": "hub-3",
+        "from": "atm_switch-4",
         "to": "pc-4",
         "from_adapter_number": 1,
         "to_adapter_number": 0
     },
     {
-        "from": "hub-3",
+        "from": "10700",
+        "to": "10700-3",
+        "from_adapter_number": 1,
+        "to_adapter_number": 3
+    },
+    {
+        "from": "10700",
+        "to": "10700-4",
+        "from_adapter_number": 2,
+        "to_adapter_number": 2
+    },
+    {
+        "from": "10700-4",
+        "to": "10700-2",
+        "from_adapter_number": 3,
+        "to_adapter_number": 1
+    },
+    {
+        "from": "atm_switch-4",
         "to": "pc-3",
         "from_adapter_number": 2,
         "to_adapter_number": 0
     },
     {
-        "from": "hub-4",
-        "to": "pc-5",
-        "from_adapter_number": 0,
-        "to_adapter_number": 0
-    },
-    {
-        "from": "atm_router-5",
-        "to": "hub-2",
-        "from_adapter_number": 3,
-        "to_adapter_number": 1
-    },
-    {
-        "from": "atm_router-4",
-        "to": "hub-4",
-        "from_adapter_number": 3,
-        "to_adapter_number": 1
-    },
-    {
-        "from": "hub-2",
-        "to": "pc-2",
+        "from": "10700-2",
+        "to": "atm_switch-3",
         "from_adapter_number": 2,
-        "to_adapter_number": 0
+        "to_adapter_number": 1
     },
     {
-        "from": "hub-4",
-        "to": "pc-6",
+        "from": "atm_switch-3",
+        "to": "pc-5",
         "from_adapter_number": 2,
         "to_adapter_number": 0
     }

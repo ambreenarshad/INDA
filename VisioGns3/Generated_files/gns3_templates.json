@@ -239,6 +239,30 @@
             "replicate_network_connection_state": true
         }
     },
+    "Alpine Linux Virt 3.18.4": {
+        "compute_id": "local",
+        "node_type": "qemu",
+        "symbol": "alpine-virt-qemu.svg",
+        "template_id": "56f4c886-bad6-4197-9562-4c903694ed4c",
+        "first_port_name": "",
+        "port_name_format": "eth{0}",
+        "properties": {
+            "adapter_type": "virtio-net-pci",
+            "adapters": 1,
+            "console_type": "telnet",
+            "cpus": 1,
+            "hda_disk_image": "alpine-virt-3.18.4.qcow2",
+            "hda_disk_interface": "virtio",
+            "hdb_disk_image": "",
+            "hdb_disk_interface": "none",
+            "hdc_disk_image": "",
+            "hdc_disk_interface": "none",
+            "ram": 128,
+            "boot_priority": "c",
+            "qemu_path": "/bin/qemu-system-x86_64",
+            "replicate_network_connection_state": true
+        }
+    },
     "Cloud": {
         "compute_id": "local",
         "node_type": "cloud",

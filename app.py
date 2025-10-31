@@ -37,6 +37,7 @@ class VisioGNS3App(QWidget):
         super().__init__()
         self.selected_file = None
         self.chat_messages = []  # <CHANGE> Store chat messages for the chatbot interface
+        self.automation_completed = False  # NEW: Track if automation has completed
         self.initUI()
 
     def initUI(self):
@@ -631,6 +632,12 @@ class VisioGNS3App(QWidget):
 
     def upload_file(self):
 
+        # NEW: Clear logs if automation was previously completed
+        if self.automation_completed:
+            self.output_text.clear()
+            self.output_text.append("🧹 Logs cleared for new upload.")
+            self.automation_completed = False
+
         file_path, _ = QFileDialog.getOpenFileName(self, "Select a File", "", "All Files (*)")
         if file_path:
             # --- File extension validation ---
@@ -661,6 +668,7 @@ class VisioGNS3App(QWidget):
         
         self.output_text.clear()
         self.output_text.append("🚀 Starting automation script...\n")
+        self.automation_completed = False  # NEW: Reset flag when starting new automation
 
         self.worker = WorkerThread(script_path)
         self.worker.output_signal.connect(self.update_output)
@@ -686,6 +694,7 @@ class VisioGNS3App(QWidget):
         self.file_label.setStyleSheet("color: #A0AEC0; font-size: 13px;")
         
         self.output_text.append("🧹 Input fields cleared and ready for next task.")
+        self.automation_completed = True  # NEW: Set flag to indicate automation completed
 
 # Run the application
 if __name__ == "__main__":
