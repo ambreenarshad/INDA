@@ -13,7 +13,7 @@
           Content-Type: "application/json"
         body: |
           {
-            "name": "d4.drawio_svg"
+            "name": "d4.drawio"
           }
         body_format: json
         return_content: yes
@@ -38,7 +38,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "template_id": "a53ede8e-b641-42c6-96a8-8aaab4dde3d9",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -81,7 +81,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "template_id": "a53ede8e-b641-42c6-96a8-8aaab4dde3d9",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -124,7 +124,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "template_id": "a53ede8e-b641-42c6-96a8-8aaab4dde3d9",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -167,7 +167,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "template_id": "a53ede8e-b641-42c6-96a8-8aaab4dde3d9",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -210,7 +210,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": ":/symbols/router.svg",
-            "template_id": "1f4ea555-fe20-488f-a5c4-7ec9947e876d",
+            "template_id": "a53ede8e-b641-42c6-96a8-8aaab4dde3d9",
             "first_port_name": "mgmt 1/1/1",
             "port_name_format": "eth 1/1/{port1}",
             "properties": {
@@ -578,7 +578,7 @@
             "compute_id": "local",
             "node_type": "qemu",
             "symbol": "alpine-virt-qemu.svg",
-            "template_id": "56f4c886-bad6-4197-9562-4c903694ed4c",
+            "template_id": "c6ec49fd-3ba7-4553-a55d-b65ac5eaea03",
             "first_port_name": "",
             "port_name_format": "eth{0}",
             "properties": {
@@ -594,7 +594,7 @@
               "hdc_disk_interface": "none",
               "ram": 128,
               "boot_priority": "c",
-              "qemu_path": "/bin/qemu-system-x86_64",
+              "qemu_path": "/usr/bin/qemu-system-x86_64",
               "replicate_network_connection_state": true
             }
           }

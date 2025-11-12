@@ -4,7 +4,7 @@
   gather_facts: no
   vars:
     gns3_server: "http://127.0.0.1:3080"
-    project_name: "d4.drawio_svg"
+    project_name: "d4.drawio"
     
   tasks:
     - name: Get all projects from GNS3
